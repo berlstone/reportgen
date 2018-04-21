@@ -14,16 +14,19 @@ namespace WebApp
         {
             services.AddMvc();              
             services.AddJsReport(new LocalReporting().UseBinary(JsReportBinary.GetBinary()).AsUtility().Create());
+
+            // Add Applciation Services
+            services.AddScoped<IViewRenderService, ViewRenderService>();
         }
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseStaticFiles();
 
-            if (env.IsDevelopment())
-            {
+           // if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
-            }
+           // }
 
             app.UseMvc(routes =>
             {

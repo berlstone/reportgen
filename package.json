@@ -4,6 +4,9 @@
   "private": true,
   "devDependencies": {},
   "dependencies": {
-    "jquery": "^3.3.1"
+    "chart.js": "^2.7.2",
+    "jquery": "^3.3.1",
+    "jsreport-wkhtmltopdf": "^1.4.0",
+    "phantom-chartjs": "^0.2.3"
   }
 }

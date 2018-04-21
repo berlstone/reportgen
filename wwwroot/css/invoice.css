@@ -1,4 +1,8 @@
-﻿.invoice-box {
+﻿.cover-page {
+    width:100%;
+    text-align:center;
+}
+.invoice-box {
     max-width: 800px;
     margin: auto;
     padding: 30px;

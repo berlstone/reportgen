@@ -6,13 +6,19 @@
 
   <ItemGroup>    
     <PackageReference Include="jsreport.Client" Version="2.0.2" />    
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />    
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />    
+    <PackageReference Include="wkhtmltopdf.msvc.64.exe" Version="0.12.4" />    
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\jsreport\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\jsreport\logs\reporter.log" />
+    <None Include="wwwroot\jsreport\server.js" />
+  </ItemGroup>
+  
   <Choose>
     <When Condition=" '$(SolutionName)' == 'jsreport.development' ">
       <ItemGroup>
@@ -25,7 +31,7 @@
       <ItemGroup>
         <PackageReference Include="jsreport.Local" Version="1.1.2" />
         <PackageReference Include="jsreport.Binary" Version="1.10.0" />
-        <PackageReference Include="jsreport.AspNetCore" Version="1.0.0" />
+        <PackageReference Include="jsreport.AspNetCore" Version="1.0.1" />
       </ItemGroup>
     </Otherwise>
   </Choose>
