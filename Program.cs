@@ -14,8 +14,7 @@ namespace WebApp
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseUrls("http://localhost:5001/")
-                
+                .UseUrls("http://*:5001/")
                 .UseStartup<Startup>()                
                 .Build();
 

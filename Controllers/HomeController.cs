@@ -25,7 +25,7 @@ namespace WebApp.Controllers
         }
         public IActionResult ViewInvoice()
         {
-            return View("../Report/Invoice", InvoiceModel.Example());
+            return View("~/Views/Report/Invoice.cshtml", InvoiceModel.Example());
         }
 
         [MiddlewareFilter(typeof(JsReportPipeline))]
@@ -49,26 +49,28 @@ namespace WebApp.Controllers
         [MiddlewareFilter(typeof(JsReportPipeline))]
         public async Task<IActionResult> InvoicePrint()
         {
-            var header = await JsReportMVCService.RenderViewToStringAsync(HttpContext, RouteData, "Header", new { });
-            var footer = await JsReportMVCService.RenderViewToStringAsync(HttpContext, RouteData, "Footer", new { });
+            //var header = await JsReportMVCService.RenderViewToStringAsync(HttpContext, RouteData, "Header", new { });
+            //var footer = await JsReportMVCService.RenderViewToStringAsync(HttpContext, RouteData, "Footer", new { });
             HttpContext.JsReportFeature()
                 //.DebugLogsToResponse()
                 //.Engine(Engine.JsRender)
                 .Recipe(Recipe.PhantomPdf)
                 .Configure((r) => r.Template.Phantom = new Phantom
                 {
-                   
+
                     //Header = header,
                     //Footer = footer,
-                    //Format = PhantomFormat.A4,
-                    //Margin = "0cm"
-                    //WaitForJS = true
-                })
+                    BlockJavaScript=false,
+                    Orientation = PhantomOrientation.Portrait,
+                    Format = PhantomFormat.A4,
+                    Margin = "0 cm",
+                    WaitForJS = true
+                });
                 //.Engine(Engine.EJS)
-                .OnAfterRender((r) =>
-                    HttpContext.Response.Headers["Content-Disposition"] = "attachment; filename=\"myReport.pdf\""
-                );
-            return View("../Report/Invoice", InvoiceModel.Example());
+                //.OnAfterRender((r) =>
+                //    HttpContext.Response.Headers["Content-Disposition"] = "attachment; filename=\"myReport.pdf\""
+                //);
+            return View("~/Views/Report/Invoice.cshtml", InvoiceModel.Example());
         }
 
         public async Task<IActionResult> Localreport()

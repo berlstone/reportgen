@@ -17,7 +17,7 @@
     <div class="cover-page">
         <img src="~/img/cover.jpg" />
     </div>
-
+    
     <div style='page-break-before: always;'></div>
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
@@ -85,12 +85,12 @@
         </table>
         <div style='page-break-before: always;'></div>
         <img src="~/img/banner.jpg" />
-
+        <div style="width: 75%">
+            <canvas id="canvas"></canvas>
+        </div>
     </div>
 
-    <div style="width: 100%">
-        <canvas id="canvas"></canvas>
-    </div>
+
     <script>
         var barChartData = {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -136,7 +136,7 @@
         window.onload = function () {
             var ctx = document.getElementById('canvas').getContext('2d');
             window.myBar = new Chart(ctx, {
-                type: 'line',
+                type: 'bar',
                 data: barChartData,
                 options: {
                     title: {
